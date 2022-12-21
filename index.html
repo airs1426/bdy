@@ -1,347 +1,315 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html>
+  <head>
+    <title>BVT Reg Form </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800&display=swap" rel="stylesheet">
-</head>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-    body {
-        background-color: #111;
-    }
-    .section{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 100vh;
-    flex-wrap: wrap;
-  }
-.box{
-      width: 650px;
-      height: 550px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: black;
-      position: relative;
-      overflow: hidden;
-  }
-  :root {
-      --first-color: #0cd4ee;
-      --second-color: #dc27fc;
-      --third-color: #e70f62;
-  }
-  .box::before{
-    content: "";
-    position: absolute;
-    width: 200px;
-    height: 250%;
-    background: linear-gradient( var(--first-color), var(--second-color));
-    filter: drop-shadow(0 0 40px var(--third-color));
-    animation: animate 3s linear infinite;
-}
-.content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    font-family: 'Comic Sans MS';
-}
-.countdown{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
+    <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+        font-size: 13px;
+        margin: 0;
+
+      }
+
+      input,
+      textarea,
+      select,
+      button {
+        font-family: arial;
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.3);
+        font-size: 12px;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      ul {
+        margin: 0;
+      }
+
+      img {
+        max-width: 100%;
+      }
+
+      ul {
+        padding-left: 0;
+        margin-bottom: 0;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      :focus {
+        outline: none;
+      }
+
+      .wrapper {
+        min-height: 100vh;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+      }
+
+      .inner {
+        padding: 20px;
+        box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.3);
+        background-color: rgba(255, 255, 255, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.5);
+        border-left: 1px solid rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(5px);
+        max-width: 900px;
+        width: 90%;
+        margin: auto;
+        display: flex;
+      }
+
+      .inner .image-holder {
+        width: 50%;
+      }
+
+      .inner form {
+        width: 50%;
+        padding-top: -10px;
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+
+      .inner h3 {
+        text-transform: uppercase;
+        font-size: 20px;
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .form-group {
+        display: flex;
+        color: #000;
+      }
+
+      .form-group input {
+        width: 50%;
+
+      }
+
+      .form-group input:first-child {
+        margin-right: 25px;
+      }
+
+      .form-wrapper {
+        position: relative;
+        margin-right: 3%;
+        color: #fff;
+      }
+
+      .form-wrapper i {
+        position: absolute;
+        bottom: 9px;
+      }
+
+      .form-control {
+        border-radius: 5px;
+        color: #fff;
+        background-color: #333;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        display: block;
+        width: 100%;
+        height: 30px;
+        padding: 3px;
+        padding-left: 10px;
+        margin-bottom: 20px;
+      }
+
+      .form-control::-webkit-input-placeholder {
+        font-size: 12px;
+        background-color: #333;
+        color: #999;
+        font-family: arial;
+      }
+
+      select {
+        font-size: 10px;
+        font-family: arial;
+        cursor: pointer;
+        padding-left: 20px;
+        background-color: #000;
+      }
+
+      select option[value=""][disabled] {
+        display: none;
+      }
+
+      button {
+        border: none;
+        width: 160px;
+        height: 40px;
+        margin: auto;
+        margin-top: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        background: #dc3d4b;
+        font-size: 15px;
+        color: #fff;
+        font-weight: 900;
+        border-radius: 5px;
+        transition: .6s;
+      }
+
+      button:hover {
+        background: none;
+        border: 1px solid #dc3d4b;
+        color: #dc3d4b;
+      }
+      .coming-soon{
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            font-family: 'Comic Sans MS';
+            font-size: 5px;
+        }
+        .countdown{
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
             
- }
+        }
+        .day,
+        .hour,
+        .minute,
+        .second {
+            font-size: 5px;
+        }
+      h3 {
+      margin-top: 20px ;
+        font-size: 15px;
+    }
+      @media (max-width: 767px) {
+        .inner {
+          width: 80%;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          display: block;
+        }
 
-.day,
-.hour,
-.minute,
-.second {
-    font-size: 50px;
-    font-family: 'Nunito', sans-serif;
-    margin: 50px;
-    margin-bottom: 10px;
-    margin-top: 10px;
- }
- .days,
-.hours,
-.minutes,
-.seconds {
-    font-size: 50px;
-    font-family: 'Nunito', sans-serif;
-    margin: 50px;
-    margin-bottom: 10px;
-    margin-top: 10px;
- }
- h4 {
-     font-size: 20px;
-     color: #0095ff;
- }
- img {
-     border: #0095ff solid 2px;
-     border-radius: 50%;
-     width: 50px;
-     margin-top: 10px;
- }
-@keyframes animate {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-.box::after{
-    content: "";
-    position: absolute;
-    background: black;
-    inset: 2px;
-}
-.box h5, h3, h2, h4, p, hr, a, img {
-    position: relative;
-    color: #0095ff;
-    z-index: 10;
-    text-align: center;
-    font-family: 'Nunito', sans-serif;
-}
-h5 {
-    font-size: 15px;
-    margin-top: 10px;
-}
-h3 {
-    font-size: 40px;
-}
-p{
-    font-size: 30px;
-}
-h2 {
-    font-family: 'Baloo Da 2', cursive;
-    margin-top: 15px;
-    font-size: 20px;
-    color: #0095ff;
-}
- .around {
-     border: ##0095ff solid 2px;
-     border-radius: 5px;
-     padding: 10px;
-     margin-top: 10px;
-     background-color: #dc27fc;
-     color: #000;
-     transition: .6s;
- }
- a {
-    border: #0095ff solid 2px;
-     border-radius: 5px;
-     padding: 10px;
-     margin-top: 35px;
-     background-color: #0095ff;
-     color: #000;
-     transition: .6s;
-     text-decoration: none;
- }
- a:hover {
-     background: none;
-     color: #0095ff;
- }
- hr {
-     width: 50%;
-     margin-top: 20px;
-     background-color: #0095ff;
- }
- .color {
-    border: #0095ff solid 1px;
-    
- }
- @media (max-width: 1024px) {
-    .box{
-      margin: 20px;
-      width: fit-content;
-      height: 93vh;
-    }
-}
+        .inner .image-holder {
+          width: 100%;
+        }
 
-@media (max-width: 590px) {
-    .box{
-      margin: 20px;
-      width: 100%;
-    }
-    .day,
-.hour,
-.minute,
-.second {
-    font-size: 30px;
-    margin: 30px;
-    margin-bottom: 10px;
- }
- .days,
-.hours,
-.minutes,
-.seconds {
-    font-size: 30px;
-    margin: 30px;
-    margin-bottom: 10px;
+        .inner form {
+          width: 100%;
+          padding: 40px 0 30px;
+        }
 
- }
- h4 {
-     font-size: 16px;
-     color: #dc27fc;
- }
- h3 {
-     font-size: 30px;
- }
- p {
-     font-size: 25px;
- }
-}
-@media (max-width: 400px) {
-    .day,
-.hour,
-.minute,
-.second {
-    font-size: 21px;
-    margin: 23px;
-    margin-bottom: 8px;
- }
- .days,
-.hours,
-.minutes,
-.seconds {
-    font-size: 21px;
-    margin: 23px;
-    margin-bottom: 8px;
- }
- h4 {
-     font-size: 13px;
-     color: #dc27fc;
- }
- h2 {
-     font-size: 14px;
- }
-}
-</style>
-<body>
-    <div class="section">
-        <div class="box">
-            <div class="content">
-                <h3>SSC 2022</h3>
-                <p>Time Countdown</p>
-                <hr class="color"/>
+        button {
+          margin-top: 50px;
+        }
+
+        .form-control::-webkit-input-placeholder {
+          font-size: 5px;
+        }
+        h3 {
+      margin-top: 5px ;
+        font-size: 20px;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper"
+      style="background-image: url('https://media.discordapp.net/attachments/778339180819906582/1055185646114836520/BIC_Banner.gif?width=840&height=473');">
+      <div class="inner">
+        <div class="image-holder">
+          <img src="https://media.discordapp.net/attachments/798905334550233149/1055188771777302558/toma.png?width=564&height=473"
+            alt="image">
+        </div>
+        <form action="https://sheetdb.io/api/v1/jq3tfv40cfxwz" method="POST" id="form">
+          <h3>Countdown  22.01.2023</h3>
+          <section class="coming-soon">
+            <div class="glass">
                 <div class="countdown">
                     <div class="container-day">
                         <h3 class="day">Time</h3>
-                        <h4>Days</h4>
+                        <h3 style="font-size: 10px; padding: 10px;" >Days</h3>
                     </div>
                     <div class="container-hour">
                         <h3 class="hour">Time</h3>
-                        <h4>Hours</h4>
+                        <h3 style="font-size: 10px; padding: 10px;">Hours</h3>
                     </div>
                     <div class="container-minute">
                         <h3 class="minute">Time</h3>
-                        <h4>Minutes</h4>
+                        <h3 style="font-size: 10px; padding: 10px;">Minutes</h3>
                     </div>
                     <div class="container-second">
                         <h3 class="second">Time</h3>
-                        <h4>Seconds</h4>
+                        <h3 style="font-size: 10px; padding: 10px;">Seconds</h3>
                     </div>
                 </div>
-                <hr class="color"/>
-                <h2>যদি আমাদের কাজটি ভালো লাগে তাহলে Click "Follow" Button</h2>
-                <div class="around"><a href="https://www.facebook.com/airs1426" >Follow</a></div>
-                <hr class="color"/>
-                <h5>Work Of</h5>
-                <img src="https://cdn.discordapp.com/attachments/778339180819906582/976863172151640084/airs.png"/>
             </div>
-        </div>
-        <div class="box">
-            <div class="content">
-                <h3>HSC 2022</h3>
-                <p>Time Countdown</p>
-                <hr class="color"/>
-                <div class="countdown">
-                    <div class="container-day">
-                        <h3 class="days">Time</h3>
-                        <h4>Days</h4>
-                    </div>
-                    <div class="container-hour">
-                        <h3 class="hours">Time</h3>
-                        <h4>Hours</h4>
-                    </div>
-                    <div class="container-minute">
-                        <h3 class="minutes">Time</h3>
-                        <h4>Minutes</h4>
-                    </div>
-                    <div class="container-second">
-                        <h3 class="seconds">Time</h3>
-                        <h4>Seconds</h4>
-                    </div>
-                </div>
-                <hr class="color"/>
-                <h2>যদি আমাদের কাজটি ভালো লাগে তাহলে Click "Follow" Button</h2>
-                <div class="around"><a href="https://www.facebook.com/airs1426" >Follow</a></div>
-                <hr class="color"/>
-                <h5>Work Of</h5>
-                <img src="https://cdn.discordapp.com/attachments/778339180819906582/976863172151640084/airs.png"/>
-            </div>
-        </div>
+        </section>
+        </form>
+      </div>
     </div>
+
+
     <script>
-        const countdown = () => {
-            const countDate = new Date('June 19, 2022 10:00:00').getTime();
-            const now = new Date().getTime();
-            const gap = countDate - now;
-        
-            const sec = 1000;
-            const min = sec * 60;
-            const hour = min * 60;
-            const day = hour * 24;
-        
-            const textDay = Math.floor(gap/ day);
-            const textHour = Math.floor((gap % day) / hour);
-            const textMin = Math.floor((gap % hour) / min);
-            const textSec = Math.floor((gap % min) / sec);
-        
-            document.querySelector('.day').innerText = textDay;
-            document.querySelector('.hour').innerText = textHour;
-            document.querySelector('.minute').innerText = textMin;
-            document.querySelector('.second').innerText = textSec;
-        };
-        
-        setInterval(countdown, 1000);
+      let form = document.querySelector('#form')
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(document.querySelector('#form'))
+        }).then(
+          response => response.json()
+        ).then((html) => {
+          // alert('we are all set. thanks');
+          window.open('success.html', '_blank');
+        });
+      })
     </script>
-    <script>
-            const hcountdown = () => {
-                const countDate = new Date('August 22, 2022 10:00:00').getTime();
-                const now = new Date().getTime();
-                const gap = countDate - now;
-            
-                const sec = 1000;
-                const min = sec * 60;
-                const hour = min * 60;
-                const day = hour * 24;
-            
-                const textDay = Math.floor(gap/ day);
-                const textHour = Math.floor((gap % day) / hour);
-                const textMin = Math.floor((gap % hour) / min);
-                const textSec = Math.floor((gap % min) / sec);
-            
-                document.querySelector('.days').innerText = textDay;
-                document.querySelector('.hours').innerText = textHour;
-                document.querySelector('.minutes').innerText = textMin;
-                document.querySelector('.seconds').innerText = textSec;
-            };
-            
-            setInterval(hcountdown, 1000);
-    </script>
+        <script>
+          const countdown = () => {
+              const countDate = new Date('January 22, 2023 00:00:00').getTime();
+              const now = new Date().getTime();
+              const gap = countDate - now;
+          
+              const sec = 1000;
+              const min = sec * 60;
+              const hour = min * 60;
+              const day = hour * 24;
+          
+              const textDay = Math.floor(gap/ day);
+              const textHour = Math.floor((gap % day) / hour);
+              const textMin = Math.floor((gap % hour) / min);
+              const textSec = Math.floor((gap % min) / sec);
+          
+              document.querySelector('.day').innerText = textDay;
+              document.querySelector('.hour').innerText = textHour;
+              document.querySelector('.minute').innerText = textMin;
+              document.querySelector('.second').innerText = textSec;
+          };
+          
+          setInterval(countdown, 1000);
+              </script>
+  </body>
 </html>
